@@ -75,6 +75,7 @@ class Registrar():
       print("A passagem não existe")
     finally:
       print("#" * 40)
+      
 
   def alterar_passagem(self):
     numero_bilhete_pesquisar = str(input("Digite o número do bilhete do passageiro: "))

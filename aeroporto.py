@@ -5,7 +5,7 @@ from typing import Type
 import pandas as pd
 
 #Definindo a IA:
-genai.configure(api_key="AIzaSyCCHzQDwJdgpGpRTCEVAgUYMNBw7CsGsuU")
+genai.configure(api_key="API_KEY")
 
 # Set up the model
 generation_config = {
@@ -43,7 +43,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
 
 #BANCO DE DADOS
 
-conexao = mysql.connector.connect(host="localhost", user="root", passwd="@NikolaTesla369", database="teste")
+conexao = mysql.connector.connect(host="localhost", user="root", passwd="senha", database="teste")
 cursor = conexao.cursor()
 
 class Registrar():

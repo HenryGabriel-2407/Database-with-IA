@@ -72,10 +72,42 @@ class Registrar():
       print("Passagem excluído com sucesso!")
       conexao.commit()
     except:
-      print("Houve um erro!")
+      print("A passagem não existe")
     finally:
       print("#" * 40)
 
+  def alterar_passagem(self):
+    numero_bilhete_pesquisar = str(input("Digite o número do bilhete do passageiro: "))
+    numero_voo_pesquisar = str(input("Digite o número do voo: "))
+    sql = f"SELECT * FROM dados_aereo WHERE numero_bilhete = '{numero_bilhete_pesquisar}' AND numero_voo = '{numero_voo_pesquisar}'"
+    try:
+      cursor.execute(sql)
+      resultado = cursor.fetchone()
+      if resultado:
+        print("-"*40)
+        nome_empresa = str(input("Digite o nome da companhia aérea: "))
+        numero_voo = str(input("Digite o número do voo: "))
+        tipo_voo = str(input("Digite o tipo do voo (nacional ou internacional): "))
+        voo_origem = str(input("Digite a cidade de origem: "))
+        voo_destino = str(input("Digite a cidade destino: "))
+        data_partida = str(input("Digite a data do voo(AAAA-MM-DD): "))
+        nome_passageiro = str(input("Digite o nome do passageiro: "))
+        cpf = str(input("Digite o CPF do passageiro [XXX.XXX.XXX-XX]: "))
+        numero_bilhete = str(input("Digite o número do bilhete: "))
+        idade_passageiro = str(input("Digite a data de nascimento do passageiro [AAAA-MM-DD]: "))
+        classe_passageiro = str(input("Digite a classe do passageiro (econômico, executivo, etc): "))
+        valor_passageiro = float(input("Digite o valor pago: "))
+    
+        try:
+          sql = f"UPDATE dados_aereo SET `nome_empresa` = '{nome_empresa}', `numero_voo` = '{numero_voo}', `tipo_voo` = '{tipo_voo}', `voo_origem` = '{voo_origem}', `voo_destino` = '{voo_destino}', `data_partida` = '{data_partida}', `nome_passageiro` = '{nome_passageiro}', `cpf_passageiro` = '{cpf}', `numero_bilhete` = '{numero_bilhete}', `idade_passageiro` = '{idade_passageiro}', `classe_passageiro` = '{classe_passageiro}', `valor_passageiro` = '{valor_passageiro}' WHERE numero_bilhete = '{numero_bilhete_pesquisar}' AND numero_voo = '{numero_voo_pesquisar}'"
+          cursor.execute(sql)
+          print("Dados modificados com sucesso!")
+          conexao.commit()
+        except Exception as e:
+          print(f"Erro, tente novamente... Erro: {e}")
+    except Exception as e:
+      print(f"Erro: {e}")
+    print("#"*40)
 
   def pesquisar_dados(self):
     sql = "SELECT * FROM dados_aereo"

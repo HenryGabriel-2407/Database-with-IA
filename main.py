@@ -6,7 +6,7 @@ aviao = Registrar()
 print("="*10 + "AEROPORTO DE ITAPEMA"+ "="*10)
 
 while True:
-    escolha = int(input("[1] adicionar passagem\n[2] remover passagem\n[3] listar passagens \n[4] análise da assistente virtual \n[5] sair \n->"))
+    escolha = int(input("[1] adicionar passagem\n[2] remover passagem\n[3] listar passagens \n[4] modificar uma passagem \n[5] análise da assistente virtual \n[6] sair \n->"))
     if escolha == 1:
         nome_empresa = str(input("Digite o nome da companhia aérea: "))
         numero_voo = str(input("Digite o número do voo: "))
@@ -29,8 +29,10 @@ while True:
     elif escolha == 3:
         aviao.pesquisar_dados()
     elif escolha == 4:
-        aviao.analisar_ia()
+        aviao.alterar_passagem()
     elif escolha == 5:
+        aviao.analisar_ia()
+    elif escolha == 6:
         break
     else:
         continue

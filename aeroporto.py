@@ -3,7 +3,10 @@ import mysql.connector
 import google.generativeai as genai
 from typing import Type
 import pandas as pd
+from rich.console import Console
+from rich.markdown import Markdown
 
+console = Console()
 #Definindo a IA:
 genai.configure(api_key="API_KEY")
 
@@ -43,7 +46,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
 
 #BANCO DE DADOS
 
-conexao = mysql.connector.connect(host="localhost", user="root", passwd="senha", database="teste")
+conexao = mysql.connector.connect(host="localhost", user="root", passwd="SENHA", database="teste")
 cursor = conexao.cursor()
 
 class Registrar():
@@ -141,5 +144,7 @@ class Registrar():
     },
     ])
     convo.send_message("YOUR_USER_INPUT")
-    print("Assistente: " + convo.last.text)
-    print("="*40)
+    markdown = Markdown(convo.last.text)
+    print("\nAssistente vitual:")
+    console.print(markdown)
+    print("="*40, "\n")

@@ -5,7 +5,7 @@ Dae, galera! Tudo bem? :smile: :v:
 
 Esse é um projeto de um sistema de passagens aéreas e neste readme estão algumas notações de como funciona este projeto.
 
-## passagem_banco_de_dados.py
+## passagem_banco_de_dados.sql
 Antes de tudo, declarei no MySQL quais são os dados e seus tipos na tabela "dados_aereos" que vou trabalhar. Temos na tabela:
 * o nome da companhia aérea (nome_empresa);
 * número do voo (numero_voo);
